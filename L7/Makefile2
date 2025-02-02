@@ -1,0 +1,18 @@
+# Example makefile using the rules built into make, rather
+# than writing our own.
+
+# Compiler for the default rule to use.
+CC = gcc
+
+# extra options we want the default compile rule to use.
+CFLAGS = -Wall -std=c99 -g
+
+# Our main executable depends on main.o and helper.o
+main: main.o helper.o
+
+# Our objects depend on their own implementation file
+# and any headers that file includes.
+# BTW, there are tools that will auto-generate these dependencies
+# for you, by looking at your source code.
+main.o: main.c helper.h
+helper.o: helper.c helper.h
